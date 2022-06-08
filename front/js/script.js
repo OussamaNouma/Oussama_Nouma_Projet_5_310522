@@ -1,5 +1,8 @@
+//variables
+
 const url = "http://localhost:3000/api/products/";
-const itemsId = document.getElementById("items")
+const itemsId = document.getElementById("items");
+// On récupère le lien de l'api et on injecte les données dans le HTML.
 fetch (url)
 
 .then( (res) => res.json())
