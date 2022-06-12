@@ -20,7 +20,7 @@ Storage.prototype.setObj = function (key, obj) {
   .then((productData)=> {
       // boucle qui va parcourire les données dans le local storage
      for (let i = 0; i < localStorage.getObj("cart").length; i++) {
-         //boucle qui va parcourir les donnée de l'api
+         //boucle qui va parcourir les données de l'api
          for (let x = 0; x < productData.length; x++){
              if(productData[x]._id == localStorage.getObj("cart")[i].urlId ) {
                  var product = productData[x] ;
