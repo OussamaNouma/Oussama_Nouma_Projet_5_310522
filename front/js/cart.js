@@ -60,4 +60,44 @@ Storage.prototype.setObj = function (key, obj) {
       
      }
 
+
+           // Fonction qui va mêtre à jour le prix
+           function updatePrice(urlId, color, quantity) {
+            if (quantity > 0) {
+              let productUpdate = localStorage.getObj("cart");
+              for (let y = 0; y < productUpdate.length; y++) {
+                if (productUpdate[y].urlId == urlId && productUpdate[y].color == color) {
+                  productUpdate[y].quantity = quantity
+                  localStorage.setObj("cart", productUpdate);
+                  window.location.reload();
+                }
+              }
+            }
+          }
+          // mise à jour du prix
+          for (let z = 0; z < itemQuantity.length; z++) {
+            itemQuantity[z].addEventListener("click", (e) => {
+              updatePrice(e.target.parentNode.parentNode.parentNode.parentNode.dataset.id, e.target.parentNode.parentNode.parentNode.parentNode.dataset.color, e.target.value);
+              
+          });
+         
+          }
+           //fonction pour supprimer un article
+           function removeItem(urlId, color) {
+            let deleteItemFromCart = localStorage.getObj("cart");
+            for (let z = 0; z < deleteItemFromCart.length; z++) {
+              if (deleteItemFromCart[z].urlId == urlId && deleteItemFromCart[z].color == color) {
+                deleteItemFromCart.splice(z, 1);
+                localStorage.setObj("cart", deleteItemFromCart);
+                window.location.reload();
+              }
+            }
+          }
+            // suppression d'un article
+            for (let k = 0; k < deleteItem.length; k++) {
+            deleteItem[k].addEventListener("click", (e) => {
+              removeItem(e.target.parentNode.parentNode.parentNode.parentNode.dataset.id, e.target.parentNode.parentNode.parentNode.parentNode.dataset.color);
+            });
+          }
+      
   })
