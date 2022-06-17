@@ -48,7 +48,7 @@ fetch("http://localhost:3000/api/products/")
       totalItem += parseInt(localStorage.getObj("cart")[i].quantity);
       totalPrice +=
         parseInt(localStorage.getObj("cart")[i].quantity) * product.price;
-      // On injecte dans le Html les donnée requise.
+      // On injecte dans le Html les données requise.
       totalExpense.innerText = totalPrice;
       totalQuantity.innerText = totalItem;
 
@@ -99,7 +99,7 @@ fetch("http://localhost:3000/api/products/")
     }
     // mise à jour du prix
     for (let z = 0; z < itemQuantity.length; z++) {
-      itemQuantity[z].addEventListener("click", (e) => {
+      itemQuantity[z].addEventListener("change", (e) => {
         updatePrice(
           e.target.parentNode.parentNode.parentNode.parentNode.dataset.id,
           e.target.parentNode.parentNode.parentNode.parentNode.dataset.color,
@@ -180,8 +180,8 @@ fetch("http://localhost:3000/api/products/")
       if (
         regex.test(city) == false ||
         city == "" ||
-        city.length < 25 ||
-        city.length > 2
+        city.length > 25 ||
+        city.length < 2
       ) {
         return false;
       } else {
@@ -196,7 +196,7 @@ fetch("http://localhost:3000/api/products/")
       if (regex.test(email) == false || email == "" || email.length > 50) {
         return false;
       } else {
-        emailErrorMsg.innerText = "";
+        emailErrorMsg.innerText ="";
         return true;
       }
     }
@@ -215,7 +215,7 @@ fetch("http://localhost:3000/api/products/")
       }
       if (!checkCity(city)) {
         cityErrorMsg.innerText =
-          "Veuillez saisir une ville valide sans chiffre.";
+          "Veuillez saisir une ville valide";
       }
       if (!checkEmail(email)) {
         emailErrorMsg.innerText = "Veuillez saisir une adresse e-mail valide.";
