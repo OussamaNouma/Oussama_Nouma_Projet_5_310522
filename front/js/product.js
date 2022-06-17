@@ -32,6 +32,8 @@ fetch(productLink)
   .then((productData) => {
     title.innerText = productData.name;
 
+    document.querySelector("title").innerText = productData.name;
+
     description.innerText = productData.description;
 
     price.innerText = productData.price;
@@ -46,13 +48,13 @@ fetch(productLink)
 
     function cartItems(urlId, quantity, color) {
       let cart = [];
-
+      quantity = parseFloat(quantity);
       if (!localStorage.getObj("cart")) {
         localStorage.setObj("cart", cart);
       } else {
         cart = localStorage.getObj("cart");
       }
-      quantity = parseInt(quantity);
+      
       // vérifier que le produit se trouve dans le panier et agir en conséquence.
       if (quantity > 0 && color.length > 0) {
         let alreadyInCart = false;
